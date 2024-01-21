@@ -1,1 +1,15 @@
-<p>shared works!</p>
+<h2>FORMULARIOS DE ANGULAR</h2>
+<form [formGroup]="form" novalidate autocomplete="off" (submit)="onSubmit()">
+  <app-button (click)="organizarElemento()">Organizar</app-button>
+  <app-button (click)="onPatchValue()">Agregar Texto</app-button>
+  <br />
+  <br />
+  <app-form-field
+    label="Input Vaxi"
+    [required]="true"
+    [control]="form.controls['input']"
+    [isInline]="isInline"
+  >
+    <app-input formControlName="input"></app-input>
+  </app-form-field>
+</form>

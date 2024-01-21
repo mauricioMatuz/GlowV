@@ -14,7 +14,6 @@ export class AppComponent {
       .collection('test')
       .snapshotChanges()
       .subscribe((personas) => {
-        console.log(personas.map((persona) => persona.payload.doc.data()));
       });
   }
 }
