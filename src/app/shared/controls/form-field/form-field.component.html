@@ -38,7 +38,8 @@
           }}</span
         >
         <span *ngSwitchCase="'pattern'">
-          
+          <span *ngIf="patternError">{{ patternError }}</span>
+          <span *ngIf="!patternError">La ER no coinciden</span>
         </span>
       </ng-container>
     </div>
