@@ -1,0 +1,16 @@
+@import "../../../../style/colors.scss";
+
+.select {
+  line-height: 36px;
+  padding: 0 15px 0 15px;
+  &_disabled {
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px rgba(0, 0, 0, 0.15);
+  }
+}
+
+:host-context(.form-field_error) {
+  .select {
+    border: 1px solid $error;
+  }
+}
