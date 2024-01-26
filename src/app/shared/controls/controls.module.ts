@@ -5,6 +5,7 @@ import { FormFieldModule } from './form-field/form-field.module';
 import { PaswwordModule } from './paswword/paswword.module';
 import { SelectModule } from './select/select.module';
 import { CheckboxesModule } from './checkboxes/checkboxes.module';
+import { RadiosModule } from './radios/radios.module';
 
 @NgModule({
   declarations: [],
@@ -15,6 +16,7 @@ import { CheckboxesModule } from './checkboxes/checkboxes.module';
     PaswwordModule,
     SelectModule,
     CheckboxesModule,
+    RadiosModule,
   ],
   exports: [
     InputModule,
@@ -22,6 +24,7 @@ import { CheckboxesModule } from './checkboxes/checkboxes.module';
     PaswwordModule,
     SelectModule,
     CheckboxesModule,
+    RadiosModule,
   ],
 })
 export class ControlsModule {}
