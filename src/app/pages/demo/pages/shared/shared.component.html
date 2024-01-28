@@ -67,4 +67,15 @@
   >
     <app-date-range formControlName="dateRange"></app-date-range>
   </app-form-field>
+  <app-form-field
+    label="AutoComplete"
+    [required]="true"
+    [control]="form.controls['autoComplete']"
+    [isInline]="isInline"
+  >
+    <app-auto-complete
+      formControlName="autoComplete"
+      [items]="items"
+    ></app-auto-complete>
+  </app-form-field>
 </form>

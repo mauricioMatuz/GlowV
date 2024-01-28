@@ -49,6 +49,17 @@ export class SharedComponent implements OnInit {
           ],
         },
       ],
+      autoComplete: [
+        null,
+        {
+          updateOn: 'blur',
+          validators: [
+            Validators.required,
+            // Validators.minLength(4),
+            // Validators.pattern(regex.password),
+          ],
+        },
+      ],
       select: [
         null,
         {
