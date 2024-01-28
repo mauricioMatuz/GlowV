@@ -18,7 +18,7 @@ export interface Value {
   to: number;
 }
 
-export interface PlaceHolder {
+export interface Placeholder {
   from: string;
   to: string;
 }
@@ -35,10 +35,56 @@ export interface PlaceHolder {
     },
   ],
 })
-export class DateRangeComponent implements ControlValueAccessor, OnInit {
-  ngOnInit(): void {}
-  writeValue(obj: any): void {}
-  registerOnChange(fn: any): void {}
-  registerOnTouched(fn: any): void {}
-  setDisabledState?(isDisabled: boolean): void {}
+export class DateRangeComponent implements OnInit, ControlValueAccessor {
+  @Input() placeholder!: Placeholder;
+  @Output() changed = new EventEmitter<Value>();
+
+  form!: FormGroup;
+
+  private propagateChange: any = () => {};
+  private propagateTouched: any = () => {};
+  constructor(private fb: FormBuilder) {}
+
+  ngOnInit(): void {
+    this.form = this.fb.group({
+      from: [null],
+      to: [null],
+    });
+  }
+
+  get min(): Date {
+    const from = this.form.controls['from'].value;
+    return from ? new Date(from) : new Date();
+  }
+
+  get max(): Date {
+    const to = this.form.controls['to'].value;
+    return to ? new Date(to) : new Date();
+  }
+
+  writeValue(value: Value): void {
+    this.form.patchValue(value || {});
+  }
+  registerOnChange(fn: any): void {
+    this.propagateChange = fn;
+  }
+  registerOnTouched(fn: any): void {
+    this.propagateTouched = fn;
+  }
+  setDisabledState?(isDisabled: boolean): void {
+    if (isDisabled) {
+      this.form.disable();
+    } else {
+      this.form.enable();
+    }
+  }
+  onChanged(): void {
+    const value = { ...this.form.value };
+    this.propagateChange(value);
+    this.changed.emit(value);
+  }
+
+  onClosed(): void {
+    this.propagateTouched();
+  }
 }
