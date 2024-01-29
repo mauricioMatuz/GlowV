@@ -39,7 +39,7 @@ export class AutoCompleteComponent
 
   formControl = new FormControl();
   options$!: Observable<ControlItem[]>;
-  private destroy = new Subject();
+  private destroy = new Subject<any>();
 
   constructor() {}
   ngOnDestroy(): void {
@@ -58,7 +58,7 @@ export class AutoCompleteComponent
     this.formControl.valueChanges
       .pipe(takeUntil(this.destroy), distinctUntilChanged())
       .subscribe((item) => {
-        const value = typeof item === 'object' ? item.value : null;
+        const value = typeof item === 'object' ? item.value : '';
         this.propagateChange(value);
         this.changed.emit(value);
       });
@@ -74,9 +74,9 @@ export class AutoCompleteComponent
   }
 
   private filter(value: string): ControlItem[] {
-    const valueLow = value.toLocaleLowerCase();
+    const filterValue = value.toLowerCase();
     return this.items.filter((items) =>
-      items.label.toLocaleLowerCase().includes(valueLow)
+      items.label.toLowerCase().includes(filterValue)
     );
   }
   writeValue(value: Value): void {

@@ -1,7 +1,14 @@
+<h2>ACTIOS</h2>
+<app-button (click)="onToggleSpinner()">Toggle spiner</app-button>
+<app-button (click)="onError()">Error</app-button>
+<app-button (click)="onSucces()">succes</app-button>
+<br><br><br>
 <h2>FORMULARIOS DE ANGULAR</h2>
 <form [formGroup]="form" novalidate autocomplete="off" (submit)="onSubmit()">
+  <app-button type="submit">Submit</app-button>
   <app-button (click)="organizarElemento()">Organizar</app-button>
   <app-button (click)="onPatchValue()">Agregar Texto</app-button>
+  <app-button (click)="onToggleDisable()">Disabled</app-button>
   <br />
   <br />
   <app-form-field

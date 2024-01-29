@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { regex, regexErrors } from 'src/app/shared/utils/regex';
+import { markFormGroupTouched } from 'src/app/shared/utils/form';
 import { ControlItem } from '../../../../models/frontend/control_item/index';
 @Component({
   selector: 'app-shared',
@@ -26,6 +27,9 @@ export class SharedComponent implements OnInit {
     ];
   }
   ngOnInit(): void {
+    this.initFrom();
+  }
+  initFrom(): void {
     this.form = this.fb.group({
       input: [
         null,
@@ -97,12 +101,40 @@ export class SharedComponent implements OnInit {
       ],
     });
   }
-
   onPatchValue(): void {
-    this.form.patchValue({ input: 'Mauricio matuz' });
+    this.form.patchValue({
+      input: '987',
+      password: 'VaxiDrezCursos%2022',
+      autoComplete: 1,
+      select: 2,
+      checkboxes: [3],
+      radios: 4,
+      date: new Date().getTime(),
+      dateRange: {
+        from: new Date(2022, 5, 10).getTime(),
+        to: new Date(2022, 11, 10).getTime(),
+      },
+    });
   }
-  onSubmit(): void {}
+  onSubmit(): void {
+    console.log('WOW');
+    if (!this.form.valid) {
+      markFormGroupTouched(this.form);
+    }
+  }
   organizarElemento() {
     this.isInline = !this.isInline;
   }
+
+  onToggleDisable(): void {
+    if (this.form.enabled) {
+      this.form.disable();
+    } else {
+      this.form.enable();
+    }
+  }
+
+  onToggleSpinner():void {}
+  onError():void {}
+  onSucces():void {}
 }
