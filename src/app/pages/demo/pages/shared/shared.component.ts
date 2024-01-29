@@ -13,7 +13,7 @@ export class SharedComponent implements OnInit {
   isInline!: boolean;
   regexErrors = regexErrors;
   items!: ControlItem[];
-
+  showSpinner = false;
   constructor(private fb: FormBuilder) {
     this.isInline = true;
     this.items = [
@@ -134,7 +134,9 @@ export class SharedComponent implements OnInit {
     }
   }
 
-  onToggleSpinner():void {}
-  onError():void {}
-  onSucces():void {}
+  onToggleSpinner(): void {
+    this.showSpinner =!this.showSpinner;
+  }
+  onError(): void {}
+  onSucces(): void {}
 }
