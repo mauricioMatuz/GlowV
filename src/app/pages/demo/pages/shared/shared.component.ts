@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { regex, regexErrors } from 'src/app/shared/utils/regex';
 import { markFormGroupTouched } from 'src/app/shared/utils/form';
 import { ControlItem } from '../../../../models/frontend/control_item/index';
+import { NotificationService } from 'src/app/service';
 @Component({
   selector: 'app-shared',
   templateUrl: './shared.component.html',
@@ -14,7 +15,10 @@ export class SharedComponent implements OnInit {
   regexErrors = regexErrors;
   items!: ControlItem[];
   showSpinner = false;
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private notification: NotificationService
+  ) {
     this.isInline = true;
     this.items = [
       { label: 'uno', value: 1 },
@@ -26,6 +30,7 @@ export class SharedComponent implements OnInit {
       { label: 'siete', value: 7 },
     ];
   }
+
   ngOnInit(): void {
     this.initFrom();
   }
@@ -135,8 +140,13 @@ export class SharedComponent implements OnInit {
   }
 
   onToggleSpinner(): void {
-    this.showSpinner =!this.showSpinner;
+    this.showSpinner = !this.showSpinner;
   }
-  onError(): void {}
-  onSucces(): void {}
+  onSuccess(): void {
+    this.notification.success('El procedimiento fue exitoso');
+  }
+
+  onError(): void {
+    this.notification.error('Se encontraron errores en el proceso');
+  }
 }

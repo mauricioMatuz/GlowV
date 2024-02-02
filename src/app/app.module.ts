@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { NotificationModule } from './service';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-import {} from '@angular/fire/auth';
 
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material.module';
@@ -43,6 +42,7 @@ const APP_DATE_FORMATS: MatDateFormats = {
     MaterialModule,
     AngularFireModule.initializeApp(environment.firebase.config),
     MatNativeDateModule,
+    NotificationModule.forRoot(),
   ],
   providers: [
     AngularFirestore,
