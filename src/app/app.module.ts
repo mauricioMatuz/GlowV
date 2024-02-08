@@ -21,6 +21,14 @@ import {
   MAT_DATE_LOCALE,
 } from '@angular/material/core';
 
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+const StoreDevtools = !environment.production
+  ? StoreDevtoolsModule.instrument({ maxAge: 50 })
+  : [];
+import { reducers, effects } from './state';
+
 const APP_DATE_FORMATS: MatDateFormats = {
   parse: {
     dateInput: { day: 'numeric', month: 'numeric', year: 'numeric' },
@@ -42,6 +50,14 @@ const APP_DATE_FORMATS: MatDateFormats = {
     MaterialModule,
     AngularFireModule.initializeApp(environment.firebase.config),
     MatNativeDateModule,
+    StoreModule.forRoot(reducers, {
+      runtimeChecks: {
+        strictActionImmutability: true,
+        strictStateImmutability: true,
+      },
+    }),
+    EffectsModule.forRoot(effects),
+    StoreDevtools,
     NotificationModule.forRoot(),
   ],
   providers: [
