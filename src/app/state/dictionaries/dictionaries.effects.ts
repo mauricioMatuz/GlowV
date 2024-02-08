@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {  Actions, ofType, createEffect } from '@ngrx/effects';
+import { Actions, ofType, createEffect } from '@ngrx/effects';
 import {
   AngularFirestore,
   DocumentChangeAction,
@@ -76,7 +76,7 @@ export class DictionariesEffects {
             .pipe(
               take(1),
               map((items) => items.map((x) => documentToItem(x)))
-            ),
+            )
         ).pipe(
           map(([roles, specializations, qualifications, skills]) => {
             const dictionaries: Dictionaries = {
