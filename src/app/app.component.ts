@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-
+import { Store, select } from '@ngrx/store';
+import * as fromRoot from './state';
+import * as fromDictionaries from './state/dictionaries';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,13 +10,14 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 })
 export class AppComponent {
   title = 'myApp';
-  constructor(private fs: AngularFirestore) {}
+  constructor(private store: Store<fromRoot.State>) {}
   ngOnInit() {
-    this.fs
-      .collection('test')
-      .snapshotChanges()
-      .subscribe((personas) => {
-      });
+    this.store.dispatch(new fromDictionaries.Read());
+    // this.fs
+    //   .collection('test')
+    //   .snapshotChanges()
+    //   .subscribe((personas) => {
+    //   });
   }
 }
 //! COLOR PIRNCIPAL: #409fb1 #fefefe
