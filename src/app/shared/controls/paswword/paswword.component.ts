@@ -10,7 +10,7 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 type passwordType = 'password' | 'text';
 
 @Component({
-  selector: 'app-paswword',
+  selector: 'app-password',
   templateUrl: './paswword.component.html',
   styleUrls: ['./paswword.component.scss'],
   providers: [

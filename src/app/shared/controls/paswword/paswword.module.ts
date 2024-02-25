@@ -7,4 +7,4 @@ import { PaswwordComponent } from './paswword.component';
   imports: [CommonModule],
   exports: [PaswwordComponent],
 })
-export class PaswwordModule {}
+export class PasswordModule {}

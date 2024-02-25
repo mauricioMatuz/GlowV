@@ -12,4 +12,8 @@ export const environment = {
       measurementId: 'G-WRWZXPSLLW',
     },
   },
+  actionCodeSettings: {
+    url: 'http://localhost:5200/demo',
+    handleCodeInApp: true,
+  },
 };

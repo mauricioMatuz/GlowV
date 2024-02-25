@@ -39,7 +39,9 @@
         >
         <span *ngSwitchCase="'pattern'">
           <span *ngIf="patternError">{{ patternError }}</span>
-          <span *ngIf="!patternError">La ER no coinciden</span>
+          <span *ngIf="!patternError"
+            >La expresion regular no tiene coincidencia</span
+          >
         </span>
       </ng-container>
     </div>

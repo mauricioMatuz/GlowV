@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InputModule } from './input/input.module';
 import { FormFieldModule } from './form-field/form-field.module';
-import { PaswwordModule } from './paswword/paswword.module';
+import { PasswordModule } from './paswword/paswword.module';
 import { SelectModule } from './select/select.module';
 import { CheckboxesModule } from './checkboxes/checkboxes.module';
 import { RadiosModule } from './radios/radios.module';
@@ -16,7 +16,7 @@ import { AutoCompleteModule } from './auto-complete/auto-complete.module';
     CommonModule,
     InputModule,
     FormFieldModule,
-    PaswwordModule,
+    PasswordModule,
     SelectModule,
     CheckboxesModule,
     RadiosModule,
@@ -27,7 +27,7 @@ import { AutoCompleteModule } from './auto-complete/auto-complete.module';
   exports: [
     InputModule,
     FormFieldModule,
-    PaswwordModule,
+    PasswordModule,
     SelectModule,
     CheckboxesModule,
     RadiosModule,

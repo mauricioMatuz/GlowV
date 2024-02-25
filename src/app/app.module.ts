@@ -4,13 +4,14 @@ import { NotificationModule } from './service';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AngularFireModule } from '@angular/fire/compat';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material.module';
-import { environment } from 'src/environments/environment.dev';
+// import { environment } from 'src/environments/environment.dev';
+import { environment } from 'src/environments/environment';
 import { HeaderComponent } from './components/header/header.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -46,9 +47,12 @@ const APP_DATE_FORMATS: MatDateFormats = {
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AngularFireStorageModule,
     BrowserAnimationsModule,
     MaterialModule,
     AngularFireModule.initializeApp(environment.firebase.config),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
     MatNativeDateModule,
     StoreModule.forRoot(reducers, {
       runtimeChecks: {
@@ -59,13 +63,8 @@ const APP_DATE_FORMATS: MatDateFormats = {
     EffectsModule.forRoot(effects),
     StoreDevtools,
     NotificationModule.forRoot(),
-    StoreModule.forRoot({}, {}),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
   providers: [
-    AngularFirestore,
-    AngularFireAuth,
-    AngularFireStorage,
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
     { provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS },
   ],
