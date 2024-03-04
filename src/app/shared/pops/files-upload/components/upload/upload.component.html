@@ -1,0 +1,12 @@
+<div class="upload">
+  {{ file.name }}
+  <progress
+    class="upload__progress"
+    [value]="(percentage$ | async) || 0"
+    max="100"
+  ></progress>
+  @if(snapshot$ | async as snapshot){
+  <div class="upload__info"></div>
+  }
+</div>
+upload

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FilesUploadDirective } from './files-upload.directive';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ImageCropperModule } from 'ngx-image-cropper';
+import { UploadComponent } from './components/upload/upload.component';
 
 @NgModule({
   declarations: [],
@@ -11,6 +12,7 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     FilesUploadDirective,
     MatDialogModule,
     ImageCropperModule,
+    UploadComponent,
   ],
   exports: [FilesUploadDirective],
 })
