@@ -1,12 +1,21 @@
 <div class="header">
-  <div class="header__title">My glow (o algo asi xd)</div>
+  <div class="header__title" routerLink="/">My glow (o algo asi xd)</div>
   <div class="header__navigation">
+    @if(!isAuthorized){
+    <div>
+      <a
+        class="app-a"
+        routerLink="auth/register"
+        routerLinkActive="app-a_active"
+        >Register</a
+      >
+      <a class="app-a" routerLink="auth/login" routerLinkActive="app-a_active"
+        >Login</a
+      >
+    </div>
+    }@else {
+    <a class="app-a" (click)="onSignOut()">Cerrar sesion</a>
+    }
     <a class="app-a" routerLink="demo" routerLinkActive="app-a_active">Demo</a>
-    <a class="app-a" routerLink="auth/register" routerLinkActive="app-a_active"
-      >Register</a
-    >
-    <a class="app-a" routerLink="auth/login" routerLinkActive="app-a_active"
-      >Login</a
-    >
   </div>
 </div>

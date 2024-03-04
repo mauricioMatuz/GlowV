@@ -18,5 +18,8 @@ export class AppComponent {
     this.store.dispatch(new fromDictionaries.Read());
     this.store.dispatch(new fromUser.Init());
   }
+  onSingOut(): void {
+    this.store.dispatch(new fromUser.SignOut());
+  }
 }
 //! COLOR PIRNCIPAL: #409fb1 #fefefe
