@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { DropZoneDirective } from './directives';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { UploadComponent } from './components/upload/upload.component';
 
 export interface DialogData {
   multiple: boolean;
@@ -10,7 +11,7 @@ export interface DialogData {
 @Component({
   selector: 'app-files-upload',
   standalone: true,
-  imports: [DropZoneDirective],
+  imports: [DropZoneDirective, UploadComponent],
   templateUrl: './files-upload.component.html',
   styleUrl: './files-upload.component.scss',
 })

@@ -5,8 +5,38 @@
     [value]="(percentage$ | async) || 0"
     max="100"
   ></progress>
-  @if(snapshot$ | async as snapshot){
-  <div class="upload__info"></div>
+  @if(snapshot$ | async; as snapshot ){
+  <div class="upload__info">
+    <div>{{ snapshot.bytesTransferred }} of {{ snapshot.totalBytes }}</div>
+    <div>
+      @if(downloadURL){
+      <a class="app-a" [href]="downloadURL" target="_blank" rel="noopener"
+        >Descargar</a
+      >
+      >} @else{<ng-template #inProgress>
+        <button
+          (click)="task.pause()"
+          class="button"
+          [disabled]="!(snapshot?.state === 'running')"
+        >
+          Pausar
+        </button>
+        <button
+          (click)="task.cancel()"
+          class="button"
+          [disabled]="!(snapshot?.state === 'running')"
+        >
+          Cancelar
+        </button>
+        <button
+          (click)="task.resume()"
+          class="button"
+          [disabled]="!(snapshot?.state === 'paused')"
+        >
+          Continuar
+        </button> </ng-template
+      >}
+    </div>
+  </div>
   }
 </div>
-upload
