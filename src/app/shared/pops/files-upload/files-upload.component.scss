@@ -1,6 +1,6 @@
 @import "../../../../style/colors.scss";
 
-.files-upload {
+.file-upload {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -54,12 +54,6 @@
 
 .error {
   color: $error;
-  text-align: center;
-  padding: 12px;
-}
-
-.error {
-  columns: $error;
   text-align: center;
   padding: 12px;
 }

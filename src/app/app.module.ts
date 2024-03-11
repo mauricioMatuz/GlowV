@@ -29,6 +29,7 @@ const StoreDevtools = !environment.production
   ? StoreDevtoolsModule.instrument({ maxAge: 50 })
   : [];
 import { reducers, effects } from './state';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 const APP_DATE_FORMATS: MatDateFormats = {
   parse: {
@@ -46,6 +47,7 @@ const APP_DATE_FORMATS: MatDateFormats = {
   declarations: [AppComponent, HeaderComponent],
   imports: [
     BrowserModule,
+    ImageCropperModule,
     AppRoutingModule,
     AngularFireStorageModule,
     BrowserAnimationsModule,

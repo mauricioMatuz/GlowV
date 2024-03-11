@@ -1,5 +1,10 @@
 <h2>Cargar algo xd</h2>
-<app-button appFilesUpload [multiple]="true">xd</app-button>
+<app-button appFilesUpload [multiple]="true" (changed)="onFilesChanged($event)"
+  >Subir varias imagenes</app-button
+>
+<app-button appFilesUpload [crop]="true" (changed)="onFilesChanged($event)"
+  >Subir solo una imagen</app-button
+>
 
 <h2>ACTIOS</h2>
 <app-button (click)="onToggleSpinner()">Toggle spiner</app-button>

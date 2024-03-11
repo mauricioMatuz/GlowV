@@ -14,7 +14,7 @@ import { FilesUploadComponent } from './files-upload.component';
 })
 export class FilesUploadDirective {
   @Input() multiple!: boolean;
-  @Input() corp!: boolean;
+  @Input() crop!: boolean;
   // @Input() accept!: string;
   // @Input() disabled!: boolean;
   // @Input() required!: boolean;
@@ -32,7 +32,7 @@ export class FilesUploadDirective {
       height: '500px',
       data: {
         multiple: this.multiple,
-        corp: this.corp,
+        crop: this.crop,
         // accept: this.accept,
         // disabled: this.disabled,
         // required: this.required,

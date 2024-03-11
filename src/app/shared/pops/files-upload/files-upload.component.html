@@ -26,8 +26,25 @@
     </div>
     @if(isError){
     <div class="err">Seleccione un archivo</div>
-    } } @if(files){ @for (file of files; track $index) {
-    <app-upload [file]="file" (completed)="onUploadComplete($event)"></app-upload> } }
+    } } @if(imageFile){
+    <app-cropper
+      [imageFile]="imageFile"
+      (changed)="onCrop($event)"
+    ></app-cropper>
+    } @if(files){ @for (file of files; track $index) {
+    <app-upload
+      [file]="file"
+      (completed)="onUploadComplete($event)"
+    ></app-upload>
+    } }
   </div>
-  <div class="file-upload__footer"></div>
+  @if(!imageFile){
+  <div class="file-upload__footer">
+    @if(!filesURLs.length){
+    <button class="app-button" (click)="onClose()">Cerrar</button>
+    }@if(filesURLs.length){
+    <button class="app-button" (click)="onComplete()">Completado</button>
+    }
+  </div>
+  }
 </div>

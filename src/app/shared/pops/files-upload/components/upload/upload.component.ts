@@ -14,11 +14,12 @@ import { Observable, Subject, lastValueFrom } from 'rxjs';
 import { finalize, takeUntil } from 'rxjs/operators';
 import firebase from 'firebase/compat/app';
 import { CommonModule } from '@angular/common';
+import { FileSizePipe } from '../../pipes/file-size/file-size.pipe';
 
 @Component({
   selector: 'app-upload',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FileSizePipe],
   templateUrl: './upload.component.html',
   styleUrl: './upload.component.scss',
 })
